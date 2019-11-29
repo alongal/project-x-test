@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Project X test</title>
-
+  <script src="https://cdn.jsdelivr.net/gh/calebporzio/project-x/dist/project-x.min.js"></script>
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
+  <div x-data="{ name: 1 }">
+    <input type="text" x-model="name">
+    <span x-text="name"></span>
+    <p>
+      <button x-on:click="name = ">Click me</button>
+      <span x-text="name"></span>
+    </p>
+  </div>
 
+  <div x-data="{ currentTab: 'foo' }">
+    <button x-bind:class="{ 'active': currentTab === 'foo' }" x-on:click="currentTab = 'foo'">Foo</button>
+    <button x-bind:class="{ 'active': currentTab === 'bar' }" x-on:click="currentTab = 'bar'">Bar</button>
+
+    <div x-bind:class="{ 'hidden': currentTab !== 'foo' }">Tab Foo</div>
+    <div class="hidden" x-bind:class="{ 'hidden': currentTab !== 'bar' }">Tab Bar</div>
+  </div>
 </body>
 </html>
